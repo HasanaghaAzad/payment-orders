@@ -1,1 +1,34 @@
-<p>orders works!</p>
+<div class="space-y-4">
+    <div class="flex space-x-4">
+        <input type="text" placeholder="Filter by country" [(ngModel)]="countryFilter" (input)="filterOrders()" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50" />
+        <input type="text" placeholder="Filter by description" [(ngModel)]="descriptionFilter" (input)="filterOrders()" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50" />
+    </div>
+    <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-50">
+            <tr>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Order Number</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Payment Description</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Street Address</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Town</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Country</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Currency</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Payment Due Date</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Unique ID</th>
+            </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+            <tr *ngFor="let order of filteredOrders">
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ order.orderNumber }}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ order.paymentDescription }}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ order.streetAddress }}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ order.town }}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ order.country }}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ order.amount }}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ order.currency }}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ order.paymentDueDate | date }}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ order.uniqueId }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
