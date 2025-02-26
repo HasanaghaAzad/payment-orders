@@ -1,11 +1,19 @@
 {
-  "pipeline": {
+  "tasks": {
     "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
+    "start:backend": {
+      "cache": false,
+      "persistent": true
+    },
+    "start:frontend": {
+      "cache": false,
+      "persistent": true
+    },
     "start": {
-      "dependsOn": ["build"],
+      "dependsOn": ["start:frontend", "start:backend"],
       "cache": false
     }
   }
