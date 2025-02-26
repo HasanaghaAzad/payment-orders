@@ -1,5 +1,13 @@
-<nav>
-  <a routerLink="/">Orders</a>
-  <a routerLink="/create-order">Create Order</a>
+<nav class="bg-blue-600 p-4 shadow-md">
+  <div class="max-w-7xl mx-auto flex justify-between items-center">
+    <!-- Brand Name -->
+    <div class="text-white text-2xl font-semibold">Payment Orders</div>
+
+    <!-- Menu Links -->
+    <div class="space-x-6">
+      <a href="/" routerLink="/" routerLinkActive="text-blue-200" class="text-white hover:text-blue-200">Orders</a>
+      <a href="/create-order" routerLink="/create-order" routerLinkActive="text-blue-200" class="text-white hover:text-blue-200">Create Order</a>
+    </div>
+  </div>
 </nav>
 <router-outlet></router-outlet>

@@ -1,49 +1,62 @@
-<form class="space-y-4" (ngSubmit)="onSubmit(createOrderForm)" #createOrderForm="ngForm">
+<div class="max-w-7xl mx-auto p-6">
+  <form class="space-y-6" (ngSubmit)="onSubmit(createOrderForm)" #createOrderForm="ngForm">
+    <!-- Order Number -->
     <div>
-        <label for="orderNumber" class="block text-sm font-medium text-gray-700">Order Number</label>
-        <input type="text" id="orderNumber" name="orderNumber" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50" ngModel />
-        <div class="text-red-500 text-sm" *ngIf="orderNumberError">Order number must be unique.</div>
+      <label for="orderNumber" class="block text-sm font-medium text-gray-700">Order Number</label>
+      <input type="text" id="orderNumber" name="orderNumber" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 p-3" ngModel />
+      <div class="text-red-500 text-sm" *ngIf="orderNumberError">Order number must be unique.</div>
     </div>
 
+    <!-- Payment Description -->
     <div>
-        <label for="paymentDescription" class="block text-sm font-medium text-gray-700">Payment Description</label>
-        <input type="text" id="paymentDescription" name="paymentDescription" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50" ngModel />
+      <label for="paymentDescription" class="block text-sm font-medium text-gray-700">Payment Description</label>
+      <input type="text" id="paymentDescription" name="paymentDescription" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 p-3" ngModel />
     </div>
 
+    <!-- Street Address -->
     <div>
-        <label for="streetAddress" class="block text-sm font-medium text-gray-700">Street Address</label>
-        <input type="text" id="streetAddress" name="streetAddress" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50" ngModel />
+      <label for="streetAddress" class="block text-sm font-medium text-gray-700">Street Address</label>
+      <input type="text" id="streetAddress" name="streetAddress" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 p-3" ngModel />
     </div>
 
+    <!-- Town -->
     <div>
-        <label for="town" class="block text-sm font-medium text-gray-700">Town</label>
-        <input type="text" id="town" name="town" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50" ngModel />
+      <label for="town" class="block text-sm font-medium text-gray-700">Town</label>
+      <input type="text" id="town" name="town" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 p-3" ngModel />
     </div>
 
+    <!-- Country -->
     <div>
-        <label for="country" class="block text-sm font-medium text-gray-700">Country</label>
-        <input type="text" id="country" name="country" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50" ngModel />
+      <label for="country" class="block text-sm font-medium text-gray-700">Country</label>
+      <input type="text" id="country" name="country" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 p-3" ngModel />
     </div>
 
+    <!-- Amount -->
     <div>
-        <label for="amount" class="block text-sm font-medium text-gray-700">Amount</label>
-        <input type="number" id="amount" name="amount" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50" ngModel />
+      <label for="amount" class="block text-sm font-medium text-gray-700">Amount</label>
+      <input type="number" id="amount" name="amount" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 p-3" ngModel />
     </div>
 
+    <!-- Currency -->
     <div>
-        <label for="currency" class="block text-sm font-medium text-gray-700">Currency</label>
-        <input type="text" id="currency" name="currency" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50" ngModel />
+      <label for="currency" class="block text-sm font-medium text-gray-700">Currency</label>
+      <input type="text" id="currency" name="currency" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 p-3" ngModel />
     </div>
 
+    <!-- Payment Due Date -->
     <div>
-        <label for="paymentDueDate" class="block text-sm font-medium text-gray-700">Payment Due Date</label>
-        <input type="date" id="paymentDueDate" name="paymentDueDate" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50" ngModel />
+      <label for="paymentDueDate" class="block text-sm font-medium text-gray-700">Payment Due Date</label>
+      <input type="date" id="paymentDueDate" name="paymentDueDate" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 p-3" ngModel />
     </div>
 
+    <!-- Unique ID -->
     <div>
-        <label for="uniqueId" class="block text-sm font-medium text-gray-700">Generated Unique ID</label>
-        <input type="text" id="uniqueId" name="uniqueId" readonly class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50" ngModel />
+      <label for="uniqueId" class="block text-sm font-medium text-gray-700">Generated Unique ID</label>
+      <input type="text" id="uniqueId" name="uniqueId" readonly class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 p-3" ngModel />
     </div>
 
-    <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-2 rounded-md shadow hover:bg-blue-700">Create Order</button>
-</form>
+    <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-3 rounded-md shadow hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+      Create Order
+    </button>
+  </form>
+</div>
