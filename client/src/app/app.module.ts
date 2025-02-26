@@ -8,13 +8,14 @@ import { routes } from './app.routes';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
+
 @NgModule({
   declarations: [AppComponent, OrdersComponent, CreateOrderComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     FormsModule,
-    CommonModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent],

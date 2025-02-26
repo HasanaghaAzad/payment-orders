@@ -1,19 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { Order, OrderService } from '../services/order.service';
 
-interface Order {
-  orderNumber: string;
-  paymentDescription: string;
-  streetAddress: string;
-  town: string;
-  country: string;
-  amount: number;
-  currency: string;
-  paymentDueDate: string;
-  uniqueId: string;
-}
+
 
 @Component({
   selector: 'app-orders',
@@ -27,20 +18,17 @@ export class OrdersComponent implements OnInit {
   countryFilter = '';
   descriptionFilter = '';
 
-  constructor() {}
+  constructor(private orderService: OrderService) {}
 
-  async ngOnInit() {
-    try {
-      const response = await fetch('/api/orders');
-      if (!response.ok) {
-        throw new Error('Failed to fetch orders');
-      }
-      const data: Order[] = await response.json();
+  ngOnInit(): void {
+    this.loadOrders();
+  }
+
+  loadOrders(): void {
+    this.orderService.getOrders({ country: 'Estonia' }).subscribe((data) => {
       this.orders = data;
       this.filteredOrders = data;
-    } catch (error) {
-      console.error('Error fetching orders:', error);
-    }
+    });
   }
 
   filterOrders() {

@@ -1,6 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClient, withFetch } from '@angular/common/http';
+import {
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-create-order',
@@ -11,26 +17,18 @@ import { FormsModule } from '@angular/forms';
 export class CreateOrderComponent {
   orderNumberError = false;
 
-  constructor() {}
+  // constructor(private http: HttpClient) {}
 
   async onSubmit(form: any) {
-    try {
-      const response = await fetch('/api/orders', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(form.value),
-      });
-
-      if (!response.ok) {
-        throw new Error('Order number must be unique.');
-      }
-
-      form.reset();
-      this.orderNumberError = false;
-    } catch (error) {
-      this.orderNumberError = true;
-    }
+    // try {
+    //   const response = await firstValueFrom(this.http.post('/api/orders', form.value));
+    //   if (!response) {
+    //     throw new Error('Order number must be unique.');
+    //   }
+    //   form.reset();
+    //   this.orderNumberError = false;
+    // } catch (error) {
+    //   this.orderNumberError = true;
+    // }
   }
 }
