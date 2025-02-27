@@ -52,6 +52,11 @@ cd server
 npm install
 ```
 
+Go back to the root directory
+```bash
+cd ..
+```
+
 3. **Set up environment variables**
 
 Copy the .env.example file to .env in the root directory (for the backend and database)
