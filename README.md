@@ -85,7 +85,7 @@ Start only the frontend (Angular):
 npm run start:frontend
 ```
 
-Running all simultaneously: You can use Turborepo to run both the frontend and backend + DB concurrently:
+Running all simultaneously:
 
 ```bash
 npm run start:all
