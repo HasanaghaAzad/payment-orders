@@ -44,7 +44,17 @@ export class OrderService {
   }
 
   async findAll(): Promise<Order[]> {
-    return this.orderRepository.find();
+    const prioritizedCountry = 'Estonia';
+    return this.orderRepository
+      .createQueryBuilder('order')
+      .orderBy(
+        // Custom sorting to prioritize the specified country
+        'CASE WHEN order.country = :prioritizedCountry THEN 1 ELSE 2 END',
+        'ASC', // First, show prioritized country orders
+      )
+      .addOrderBy('order.paymentDueDate', 'ASC')
+      .setParameters({ prioritizedCountry })
+      .getMany();
   }
 
   async findOne(uniqueId: string): Promise<Order | null> {
