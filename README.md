@@ -90,3 +90,5 @@ Running all simultaneously:
 ```bash
 npm run start:all
 ```
+
+Open your browser and navigate to `http://localhost:4200/`.
