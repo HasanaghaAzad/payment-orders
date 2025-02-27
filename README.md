@@ -10,13 +10,12 @@ Payment Orders is an application designed to manage orders efficiently, allowing
 - Prioritization of orders by country.
 - Sort orders by payment due date.
 
-## Technologies Used
+### Technologies Used
 
 - **Frontend**: Angular, TailwindCSS
-- **Backend**: NestJS, TypeORM (for interacting with the database)
-- **Database**: PostgreSQL (managed with Docker)
-- **Docker**: Used to run the PostgreSQL database container
-- **Turborepo**: Monorepo management tool to manage the client and server projects
+- **Backend**: NestJS, TypeORM
+- **Database**: PostgreSQL (Docker)
+- **Monorepo**: Turborepo build system
 
 ## Installation
 
