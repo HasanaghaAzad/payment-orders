@@ -33,6 +33,7 @@ export class OrderService {
     return this.http.get<Order>(`${this.apiUrl}/${uniqueId}`);
   }
   createOrder(order: Partial<Order>): Observable<Order> {
+    console.log(order);
     return this.http.post<Order>(this.apiUrl, order);
   }
 }

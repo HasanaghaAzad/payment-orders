@@ -7,6 +7,7 @@ import {
   withInterceptorsFromDi,
 } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
+import { OrderService } from '../services/order.service';
 
 @Component({
   selector: 'app-create-order',
@@ -16,19 +17,31 @@ import { firstValueFrom } from 'rxjs';
 })
 export class CreateOrderComponent {
   orderNumberError = false;
-
-  // constructor(private http: HttpClient) {}
+  successMessage = '';
+  constructor(
+    private orderService: OrderService
+  ) {}
 
   async onSubmit(form: any) {
-    // try {
-    //   const response = await firstValueFrom(this.http.post('/api/orders', form.value));
-    //   if (!response) {
-    //     throw new Error('Order number must be unique.');
-    //   }
-    //   form.reset();
-    //   this.orderNumberError = false;
-    // } catch (error) {
-    //   this.orderNumberError = true;
-    // }
+    if (form.valid) {
+      console.log('onSubmit', form.value);
+      try {
+        // Use firstValueFrom to convert observable to a promise
+        const createdOrder = await firstValueFrom(
+          this.orderService.createOrder(form.value)
+        );
+        this.successMessage = 'Order successfully created!';
+        form.reset();
+
+        setTimeout(() => {
+          this.successMessage = ''; // Hide after 3 seconds
+        }, 5000);
+      } catch (error) {
+        console.error('Error creating order:', error);
+        // Handle error (e.g., show an error message to the user)
+      }
+    } else {
+      console.error('Form is invalid!');
+    }
   }
 }

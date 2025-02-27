@@ -1,3 +1,6 @@
+<div *ngIf="successMessage" class="fixed top-4 right-4 bg-green-500 text-white p-3 rounded shadow">
+  {{ successMessage }}
+</div>
 <div class="max-w-7xl mx-auto p-6">
   <form class="space-y-6" (ngSubmit)="onSubmit(createOrderForm)" #createOrderForm="ngForm">
     <!-- Order Number -->
