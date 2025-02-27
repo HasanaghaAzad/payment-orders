@@ -37,14 +37,14 @@ Payment Orders is an application designed to manage orders efficiently, allowing
 
 2. **Install dependencies**
 
-**For the client (Angular)**
+For the client (Angular)
 
 ```bash
 cd client
 npm install
 ```
 
-**For the server (NestJS)**
+For the server (NestJS)
 
 ```bash
 cd server
@@ -53,13 +53,7 @@ npm install
 
 3. **Set up environment variables**
 
-Client-side: Copy the .env.example file to .env in the client/ directory
-
-```bash
-cp client/.env.example client/.env
-```
-
-Backend: Copy the .env.example file to .env in the root directory (for the backend and database)
+Copy the .env.example file to .env in the root directory (for the backend and database)
 
 ```bash
 cp .env.example .env
