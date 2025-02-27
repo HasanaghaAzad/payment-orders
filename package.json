@@ -8,7 +8,6 @@
     "start:backend-watch": "cd server && npm run start:dev",
     "start:frontend": "cd client && npm run start",
     "start:all": "npm run start:db && turbo run start --parallel",
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "Hasanagha Azad",
