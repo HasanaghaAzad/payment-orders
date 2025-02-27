@@ -8,6 +8,7 @@ import {
 } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import { OrderService } from '../services/order.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-create-order',
@@ -18,15 +19,13 @@ import { OrderService } from '../services/order.service';
 export class CreateOrderComponent {
   orderNumberError = false;
   successMessage = '';
-  constructor(
-    private orderService: OrderService
-  ) {}
+  constructor(private orderService: OrderService) {}
 
   async onSubmit(form: any) {
     if (form.valid) {
-      console.log('onSubmit', form.value);
+      this.orderNumberError = false; // Reset error before submitting
+
       try {
-        // Use firstValueFrom to convert observable to a promise
         const createdOrder = await firstValueFrom(
           this.orderService.createOrder(form.value)
         );
@@ -36,9 +35,18 @@ export class CreateOrderComponent {
         setTimeout(() => {
           this.successMessage = ''; // Hide after 3 seconds
         }, 5000);
-      } catch (error) {
+      } catch (error: unknown) {
         console.error('Error creating order:', error);
-        // Handle error (e.g., show an error message to the user)
+
+        // Type check before accessing properties
+        if (error instanceof HttpErrorResponse) {
+          if (error?.error?.field === 'orderNumber') {
+            this.orderNumberError = true; // Show error message for orderNumber
+          }
+        } else {
+          // Handle other kinds of errors (e.g., network error)
+          console.error('Unexpected error:', error);
+        }
       }
     } else {
       console.error('Form is invalid!');

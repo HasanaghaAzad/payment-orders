@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Order } from './order.entity';
+import { HttpException, HttpStatus } from '@nestjs/common';
 
 @Injectable()
 export class OrderService {
@@ -11,6 +12,17 @@ export class OrderService {
   ) {}
 
   async create(order: Order): Promise<Order> {
+    const existsWithSameOrderNumber = await this.orderRepository.findOne({
+      where: { orderNumber: order.orderNumber },
+    });
+
+    if (existsWithSameOrderNumber) {
+      throw new HttpException(
+        { message: 'Order number must be unique.', field: 'orderNumber' },
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+
     order.uniqueId = await this.generateUniqueId();
     return this.orderRepository.save(order);
   }
