@@ -37,16 +37,17 @@ Payment Orders is an application designed to manage orders efficiently, allowing
 
 2. **Install dependencies**
 
-For the client (Angular)
+Install dependencies for the frontend (Angular)
 
 ```bash
 cd client
 npm install
 ```
 
-For the server (NestJS)
+Go back to the root directory and then go to install the backend (NestJS)
 
 ```bash
+cd ..
 cd server
 npm install
 ```
