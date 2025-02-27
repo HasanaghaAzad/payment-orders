@@ -1,7 +1,13 @@
-# compiled output
-/dist
+# Compiled output
+dist/
+node_modules/
+build/
+tmp/
+
+# Node
 /node_modules
-/build
+npm-debug.log
+yarn-error.log
 
 # OS
 .DS_Store
@@ -11,3 +17,20 @@
 
 # Ignore Turborepo cache and build
 .turbo/
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# Miscellaneous
+.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
