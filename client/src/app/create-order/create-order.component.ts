@@ -27,7 +27,7 @@ type CreateOrderForm = NgForm & { value: CreateOrderFormValues };
 })
 export class CreateOrderComponent {
   orderNumberError = false;
-  successMessage = '';
+  successMessage: string | null = null;
   constructor(private orderService: OrderService) {}
 
   async onSubmit(form: CreateOrderForm) {
@@ -39,9 +39,6 @@ export class CreateOrderComponent {
         this.successMessage = 'Order successfully created!';
         form.reset();
 
-        setTimeout(() => {
-          this.successMessage = '';
-        }, 5000);
       } catch (error: unknown) {
         if (error instanceof HttpErrorResponse) {
           if (error?.error?.field === 'orderNumber') {
@@ -50,5 +47,8 @@ export class CreateOrderComponent {
         }
       }
     }
+  }
+  closeSuccessMessage() {
+    this.successMessage = null;
   }
 }
