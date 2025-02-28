@@ -36,6 +36,12 @@ Payment Orders is an application designed to manage orders efficiently, allowing
 
 2. **Install dependencies**
 
+Install Turborepo dependencies
+
+```bash
+npm install
+```
+
 Install dependencies for the frontend (Angular)
 
 ```bash
