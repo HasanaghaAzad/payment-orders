@@ -6,7 +6,7 @@ import { OrderService } from '../services/order.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 
-type CreateOrderFormValues = {
+export type CreateOrderFormValues = {
   orderNumber: string;
   paymentDescription: string;
   streetAddress: string;

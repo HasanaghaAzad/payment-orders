@@ -23,7 +23,7 @@
         </tr>
       </thead>
       <tbody class="bg-white divide-y divide-gray-200">
-        <tr *ngFor="let order of filteredOrders">
+        <tr *ngFor="let order of orders">
           <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ order.orderNumber }}</td>
           <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ order.paymentDescription }}</td>
           <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ order.streetAddress }}</td>

@@ -4,8 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Order, OrderService } from '../services/order.service';
 
-
-
 @Component({
   selector: 'app-orders',
   imports: [CommonModule, FormsModule],
@@ -21,23 +19,19 @@ export class OrdersComponent implements OnInit {
   constructor(private orderService: OrderService) {}
 
   ngOnInit(): void {
-    this.loadOrders();
+    this.loadOrders({});
   }
 
-  loadOrders(): void {
-    this.orderService.getOrders({ country: 'Estonia' }).subscribe((data) => {
+  loadOrders(params: { [key: string]: string }): void {
+    this.orderService.getOrders(params).subscribe((data) => {
       this.orders = data;
-      this.filteredOrders = data;
     });
   }
 
   filterOrders() {
-    this.filteredOrders = this.orders.filter((order) => {
-      return (
-        (!this.countryFilter || order.country.includes(this.countryFilter)) &&
-        (!this.descriptionFilter ||
-          order.paymentDescription.includes(this.descriptionFilter))
-      );
+    this.loadOrders({
+      country: this.countryFilter,
+      description: this.descriptionFilter,
     });
   }
 }

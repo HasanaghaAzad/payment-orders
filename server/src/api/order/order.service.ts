@@ -43,9 +43,9 @@ export class OrderService {
     return uniqueId;
   }
 
-  async findAll(): Promise<Order[]> {
+  async findAll(queryParams: { [key: string]: string }): Promise<Order[]> {
     const prioritizedCountry = 'Estonia';
-    return this.orderRepository
+    const query = this.orderRepository
       .createQueryBuilder('order')
       .orderBy(
         // Custom sorting to prioritize the specified country
@@ -53,8 +53,21 @@ export class OrderService {
         'ASC', // First, show prioritized country orders
       )
       .addOrderBy('order.paymentDueDate', 'ASC')
-      .setParameters({ prioritizedCountry })
-      .getMany();
+      .setParameters({ prioritizedCountry });
+
+    if (queryParams.country) {
+      query.andWhere('order.country LIKE :country', {
+        country: `%${queryParams.country}%`,
+      });
+    }
+
+    if (queryParams.description) {
+      query.andWhere('order.paymentDescription LIKE :paymentDescription', {
+        paymentDescription: `%${queryParams.description}%`,
+      });
+    }
+
+    return query.getMany();
   }
 
   async findOne(uniqueId: string): Promise<Order | null> {
