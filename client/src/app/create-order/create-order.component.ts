@@ -1,14 +1,23 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClient, withFetch } from '@angular/common/http';
-import {
-  provideHttpClient,
-  withInterceptorsFromDi,
-} from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import { OrderService } from '../services/order.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NgForm } from '@angular/forms';
+
+type CreateOrderFormValues = {
+  orderNumber: string;
+  paymentDescription: string;
+  streetAddress: string;
+  town: string;
+  country: string;
+  amount: number;
+  currency: string;
+  paymentDueDate: string;
+};
+
+type CreateOrderForm = NgForm & { value: CreateOrderFormValues };
 
 @Component({
   selector: 'app-create-order',
@@ -21,35 +30,25 @@ export class CreateOrderComponent {
   successMessage = '';
   constructor(private orderService: OrderService) {}
 
-  async onSubmit(form: any) {
+  async onSubmit(form: CreateOrderForm) {
     if (form.valid) {
       this.orderNumberError = false; // Reset error before submitting
 
       try {
-        const createdOrder = await firstValueFrom(
-          this.orderService.createOrder(form.value)
-        );
+        await firstValueFrom(this.orderService.createOrder(form.value));
         this.successMessage = 'Order successfully created!';
         form.reset();
 
         setTimeout(() => {
-          this.successMessage = ''; // Hide after 3 seconds
+          this.successMessage = '';
         }, 5000);
       } catch (error: unknown) {
-        console.error('Error creating order:', error);
-
-        // Type check before accessing properties
         if (error instanceof HttpErrorResponse) {
           if (error?.error?.field === 'orderNumber') {
             this.orderNumberError = true; // Show error message for orderNumber
           }
-        } else {
-          // Handle other kinds of errors (e.g., network error)
-          console.error('Unexpected error:', error);
         }
       }
-    } else {
-      console.error('Form is invalid!');
     }
   }
 }
