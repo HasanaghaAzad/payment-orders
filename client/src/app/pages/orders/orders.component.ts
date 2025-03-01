@@ -2,7 +2,7 @@ import { Component, Injectable, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { Order, OrderService } from '../services/order.service';
+import { Order, OrderService } from '../../services/order.service';
 
 @Component({
   selector: 'app-orders',

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { CreateOrderFormValues } from '../create-order/create-order.component';
+import { CreateOrderFormValues } from '../pages/create-order/create-order.component';
 
 export type Order = CreateOrderFormValues & {
   uniqueId: string;

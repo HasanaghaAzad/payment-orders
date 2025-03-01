@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { OrdersComponent } from './orders/orders.component';
-import { CreateOrderComponent } from './create-order/create-order.component';
+import { OrdersComponent } from './pages/orders/orders.component';
+import { CreateOrderComponent } from './pages/create-order/create-order.component';
 
 const routes: Routes = [
   { path: '', component: OrdersComponent },  // Empty path is default route
